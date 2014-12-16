@@ -28,7 +28,7 @@ class RemoveSlashMiddlewareTest(TestCase):
     self.assertIsInstance(response, HttpResponsePermanentRedirect)
     self.assertRegexpMatches(response['Location'], r'/url\+with\+plus\?param1=1&param2=%2Bfoo$')
 
-  def test_permanent_redirect_to_unslashed_when_url_has_urlquoted_chars(self):
+  def test_permanent_redirect_to_unslashed_when_url_has_urlencoded_chars(self):
     # urlquote is used because django.test.Client decodes the URL
     # which goes against the test
     slashed_url = urlquote('/testapps/quoted/foo%2Bbar%23baz%20/')
